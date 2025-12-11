@@ -28,7 +28,7 @@ final class WeatherServiceTests: XCTestCase {
     }
 
     // MARK: - Test Cases
-    /// Test successful weather data fetching
+
     func testFetchWeather_Success() async throws {
         // Given: Valid weather API response
         let mockResponse = createMockWeatherResponse()
@@ -40,19 +40,19 @@ final class WeatherServiceTests: XCTestCase {
             headerFields: nil
         )
 
-        // When: Fetching weather for a city
+
         let result = try await sut.fetchWeather(for: "London")
 
-        // Then: Should return valid weather data
+
         XCTAssertEqual(result.cityName, "London")
         XCTAssertEqual(result.temperature, 20.0)
         XCTAssertEqual(result.description, "clear sky")
         XCTAssertEqual(result.humidity, 65)
     }
 
-    /// Test city not found (404) error
+
     func testFetchWeather_CityNotFound() async {
-        // Given: 404 response
+
         mockURLSession.mockData = Data()
         mockURLSession.mockResponse = HTTPURLResponse(
             url: URL(string: "https://api.openweathermap.org")!,
@@ -61,7 +61,7 @@ final class WeatherServiceTests: XCTestCase {
             headerFields: nil
         )
 
-        // When/Then: Should throw cityNotFound error
+
         do {
             _ = try await sut.fetchWeather(for: "InvalidCity")
             XCTFail("Should have thrown cityNotFound error")
@@ -72,7 +72,7 @@ final class WeatherServiceTests: XCTestCase {
         }
     }
 
-    /// Test unauthorized (401) error - invalid API key
+
     func testFetchWeather_Unauthorized() async {
         // Given: 401 response
         mockURLSession.mockResponse = HTTPURLResponse(
@@ -81,8 +81,6 @@ final class WeatherServiceTests: XCTestCase {
             httpVersion: nil,
             headerFields: nil
         )
-
-        // When/Then: Should throw unauthorized error
         do {
             _ = try await sut.fetchWeather(for: "London")
             XCTFail("Should have thrown unauthorized error")
@@ -93,7 +91,7 @@ final class WeatherServiceTests: XCTestCase {
         }
     }
 
-    /// Test server error (500) handling
+
     func testFetchWeather_ServerError() async {
         // Given: 500 response
         mockURLSession.mockResponse = HTTPURLResponse(
@@ -103,7 +101,7 @@ final class WeatherServiceTests: XCTestCase {
             headerFields: nil
         )
 
-        // When/Then: Should throw serverError
+
         do {
             _ = try await sut.fetchWeather(for: "London")
             XCTFail("Should have thrown server error")
@@ -118,7 +116,7 @@ final class WeatherServiceTests: XCTestCase {
         }
     }
 
-    /// Test decoding error with invalid JSON
+
     func testFetchWeather_DecodingError() async {
         // Given: Invalid JSON data
         mockURLSession.mockData = Data("Invalid JSON".utf8)
@@ -129,7 +127,7 @@ final class WeatherServiceTests: XCTestCase {
             headerFields: nil
         )
 
-        // When/Then: Should throw decodingError
+
         do {
             _ = try await sut.fetchWeather(for: "London")
             XCTFail("Should have thrown decoding error")
@@ -141,7 +139,7 @@ final class WeatherServiceTests: XCTestCase {
     }
 
     // MARK: - Helper Methods
-    /// Creates a mock WeatherResponse for testing
+
     private func createMockWeatherResponse() -> WeatherResponse {
         return WeatherResponse(
             coord: WeatherResponse.Coordinate(lon: -0.13, lat: 51.51),

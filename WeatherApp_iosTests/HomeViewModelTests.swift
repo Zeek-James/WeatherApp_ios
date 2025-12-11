@@ -36,7 +36,6 @@ final class HomeViewModelTests: XCTestCase {
     }
 
     // MARK: - Test Cases
-    /// Test initial state is idle
     func testInitialState_IsIdle() {
         // Then: Initial state should be idle
         XCTAssertEqual(sut.state, .idle)
@@ -86,7 +85,6 @@ final class HomeViewModelTests: XCTestCase {
         }
     }
 
-    /// Test weather fetching with empty city name
     func testFetchWeather_EmptyCity_ShowsError() {
         // Given: Empty city name
         var capturedState: HomeViewModel.State?
@@ -94,7 +92,6 @@ final class HomeViewModelTests: XCTestCase {
             capturedState = state
         }
 
-        // When: Fetching weather with empty city
         sut.fetchWeather(for: "")
 
         // Then: Should show error
@@ -102,7 +99,6 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(mockWeatherService.fetchWeatherCallCount, 0)
     }
 
-    /// Test weather fetching with whitespace-only city name
     func testFetchWeather_WhitespaceCity_ShowsError() {
         // Given: Whitespace-only city name
         var capturedState: HomeViewModel.State?
@@ -110,15 +106,12 @@ final class HomeViewModelTests: XCTestCase {
             capturedState = state
         }
 
-        // When: Fetching weather
         sut.fetchWeather(for: "   ")
 
-        // Then: Should show error
         XCTAssertEqual(capturedState, .error(ErrorMessages.invalidCity))
         XCTAssertEqual(mockWeatherService.fetchWeatherCallCount, 0)
     }
 
-    /// Test weather fetching failure - city not found
     func testFetchWeather_CityNotFound_ShowsError() async {
         // Given: Service configured to throw city not found error
         mockWeatherService.shouldThrowError = true
@@ -131,13 +124,12 @@ final class HomeViewModelTests: XCTestCase {
             }
         }
 
-        // When: Fetching weather
+
         sut.fetchWeather(for: "InvalidCityName")
 
-        // Wait for async operation
+
         await fulfillment(of: [expectation], timeout: 2.0)
 
-        // Then: Should show error state
         if case .error(let message) = sut.state {
             XCTAssertEqual(message, NetworkError.cityNotFound.localizedDescription)
         } else {
@@ -145,7 +137,6 @@ final class HomeViewModelTests: XCTestCase {
         }
     }
 
-    /// Test weather fetching failure - network error
     func testFetchWeather_NetworkError_ShowsError() async {
         // Given: Service configured to throw network error
         mockWeatherService.shouldThrowError = true
@@ -158,13 +149,10 @@ final class HomeViewModelTests: XCTestCase {
             }
         }
 
-        // When: Fetching weather
         sut.fetchWeather(for: "London")
 
-        // Wait for async operation
         await fulfillment(of: [expectation], timeout: 2.0)
 
-        // Then: Should show error state
         if case .error(let message) = sut.state {
             XCTAssertEqual(message, NetworkError.networkUnavailable.localizedDescription)
         } else {
@@ -172,61 +160,114 @@ final class HomeViewModelTests: XCTestCase {
         }
     }
 
-    /// Test saving favorite city
-    func testSaveFavoriteCity() {
-        // Given: A city name
+    func testSaveFavoriteCity_AfterSuccessfulSearch() async {
+        // Given: A successful weather fetch
         let cityName = "Tokyo"
+        let mockData = WeatherData(
+            cityName: cityName,
+            temperature: 25.0,
+            feelsLike: 24.0,
+            description: "Clear",
+            humidity: 65,
+            pressure: 1010,
+            windSpeed: 2.5,
+            country: "JP"
+        )
+        mockWeatherService.mockWeatherData = mockData
 
-        // When: Saving as favorite
-        sut.saveFavoriteCity(cityName)
+        let expectation = expectation(description: "State changes to loaded")
+        sut.onStateChanged = { state in
+            if case .loaded = state {
+                expectation.fulfill()
+            }
+        }
 
-        // Then: Should save to preferences service
+        sut.fetchWeather(for: cityName)
+        await fulfillment(of: [expectation], timeout: 2.0)
+
+        let result = sut.saveFavoriteCity()
+
+        XCTAssertTrue(result)
         XCTAssertEqual(mockPreferencesService.savedCity, cityName)
         XCTAssertEqual(mockPreferencesService.saveFavoriteCityCallCount, 1)
     }
 
-    /// Test getting favorite city
+    func testSaveFavoriteCity_WithoutSearch_ReturnsFalse() {
+        // Given: No prior search
+
+        let result = sut.saveFavoriteCity()
+
+        XCTAssertFalse(result)
+        XCTAssertEqual(mockPreferencesService.saveFavoriteCityCallCount, 0)
+    }
+
+    func testCanSaveFavorite_AfterSuccessfulSearch() async {
+        // Given: A successful weather fetch
+        let mockData = WeatherData(
+            cityName: "Paris",
+            temperature: 18.0,
+            feelsLike: 16.0,
+            description: "Cloudy",
+            humidity: 70,
+            pressure: 1012,
+            windSpeed: 4.0,
+            country: "FR"
+        )
+        mockWeatherService.mockWeatherData = mockData
+
+        let expectation = expectation(description: "State changes to loaded")
+        sut.onStateChanged = { state in
+            if case .loaded = state {
+                expectation.fulfill()
+            }
+        }
+
+        sut.fetchWeather(for: "Paris")
+        await fulfillment(of: [expectation], timeout: 2.0)
+
+        // When: Checking if can save favorite
+        let canSave = sut.canSaveFavorite()
+
+        // Then: Should return true
+        XCTAssertTrue(canSave)
+    }
+
+    func testCanSaveFavorite_WithoutSearch_ReturnsFalse() {
+
+        let canSave = sut.canSaveFavorite()
+
+        XCTAssertFalse(canSave)
+    }
+
     func testGetFavoriteCity() {
-        // Given: A saved favorite city
         mockPreferencesService.savedCity = "Berlin"
 
-        // When: Getting favorite city
         let favoriteCity = sut.getFavoriteCity()
 
-        // Then: Should return saved city
         XCTAssertEqual(favoriteCity, "Berlin")
         XCTAssertEqual(mockPreferencesService.getFavoriteCityCallCount, 1)
     }
 
-    /// Test getting favorite city when none exists
     func testGetFavoriteCity_WhenNoneExists() {
         // Given: No saved favorite city
         mockPreferencesService.savedCity = nil
 
-        // When: Getting favorite city
         let favoriteCity = sut.getFavoriteCity()
 
-        // Then: Should return nil
         XCTAssertNil(favoriteCity)
         XCTAssertEqual(mockPreferencesService.getFavoriteCityCallCount, 1)
     }
 
-    /// Test clearing favorite city
     func testClearFavoriteCity() {
-        // Given: A saved favorite city
         mockPreferencesService.savedCity = "Madrid"
 
-        // When: Clearing favorite
         sut.clearFavoriteCity()
 
-        // Then: Should clear from preferences
         XCTAssertNil(mockPreferencesService.savedCity)
         XCTAssertEqual(mockPreferencesService.clearFavoriteCityCallCount, 1)
     }
 
-    /// Test resetting state
     func testResetState() {
-        // Given: ViewModel in loaded state
         sut.state = .loaded(WeatherData(
             cityName: "Test",
             temperature: 20.0,
@@ -238,7 +279,6 @@ final class HomeViewModelTests: XCTestCase {
             country: "US"
         ))
 
-        // When: Resetting state
         sut.resetState()
 
         // Then: Should return to idle
