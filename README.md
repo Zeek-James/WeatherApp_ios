@@ -224,7 +224,7 @@ WeatherApp_ios/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/WeatherApp_ios.git
+   git clone https://github.com/Zeek-James/WeatherApp_ios.git
    cd WeatherApp_ios
    ```
 
@@ -328,7 +328,7 @@ class MockWeatherService: WeatherServiceProtocol { }
 - Testable architecture
 
 ### 3. Unit Testing ✅
-- 16 comprehensive unit tests
+- Comprehensive unit tests
 - Mock objects for isolation
 - Async/await testing
 - 60%+ code coverage
@@ -340,38 +340,13 @@ class MockWeatherService: WeatherServiceProtocol { }
 - Proper lifecycle management (viewDidLoad, viewDidAppear)
 - State-driven UI updates
 
-## 📊 Code Metrics
-
-- **Total Lines**: ~1,500 LOC
-- **ViewControllers**: 3
-- **ViewModels**: 3
-- **Services**: 2
-- **Unit Tests**: 16
-- **Test Coverage**: 60%+
-- **Design Patterns**: 8+
-
-## 🔐 Security Note
-
-**Important**: The API key is currently hardcoded for demonstration purposes. In a production environment:
-
-- Move API keys to environment variables
-- Use `.xcconfig` files for configuration
-- Store sensitive data in Keychain
-- Never commit API keys to version control
-
 ## 🚧 Future Enhancements
 
-- [ ] 5-day weather forecast
 - [ ] Location-based weather detection
-- [ ] Weather maps and radar
 - [ ] Multiple saved cities
 - [ ] Unit conversion (Celsius/Fahrenheit)
 - [ ] Dark mode support
-- [ ] Widget support
 - [ ] Offline caching with CoreData
-- [ ] UI tests
-- [ ] Coordinator pattern for navigation
-- [ ] SwiftUI version
 
 ## 📝 Requirements Checklist
 
@@ -379,35 +354,13 @@ This project fulfills all technical requirements:
 
 - ✅ **SOLID Principles**: All 5 principles demonstrated
 - ✅ **Dependency Injection**: DIContainer with constructor injection
-- ✅ **Unit Tests**: 16 tests with mocks and protocol abstraction
+- ✅ **Unit Tests**: tests with mocks and protocol abstraction
 - ✅ **Multiple Screens**: 3 screens with proper view lifecycle
 - ✅ **GitHub Repository**: Professional README and documentation
-
-## 🤝 Contributing
-
-This is a portfolio/assessment project, but feedback and suggestions are welcome!
-
-## 📄 License
-
-This project is available under the MIT License.
-
-## 👤 Author
-
-**Your Name**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
 
 ## 🙏 Acknowledgments
 
 - Weather data provided by [OpenWeather API](https://openweathermap.org/)
-- Built as a technical assessment demonstrating iOS best practices
 
 ---
 
-<div align="center">
-
-**Built with ❤️ using Swift**
-
-⭐ Star this repo if you find it helpful!
-
-</div>
