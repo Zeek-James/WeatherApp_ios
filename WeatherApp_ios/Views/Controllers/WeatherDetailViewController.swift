@@ -2,20 +2,11 @@
 //  WeatherDetailViewController.swift
 //  WeatherApp
 //
-//  Detail screen showing complete weather information.
-//  Demonstrates MVVM data presentation and view lifecycle.
-//
 
 import UIKit
 
-// MARK: - WeatherDetailViewController
-/// Screen displaying detailed weather information
-/// Responsibilities:
-/// - Display weather data in a user-friendly format
-/// - Could be extended with refresh, share, forecast, etc.
 final class WeatherDetailViewController: UIViewController {
 
-    // MARK: - UI Components
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var feelsLikeLabel: UILabel!
@@ -25,23 +16,18 @@ final class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
 
-    // MARK: - Properties
-    /// ViewModel injected via DI Container
     var viewModel: WeatherDetailViewModel!
 
-    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         displayWeatherData()
     }
 
-    // MARK: - Setup Methods
     private func setupUI() {
         title = "Weather Details"
         view.backgroundColor = .systemBackground
 
-        // Configure container view
         containerView?.backgroundColor = .secondarySystemBackground
         containerView?.layer.cornerRadius = UIConstants.cornerRadius
         containerView?.layer.shadowColor = UIColor.black.cgColor
@@ -49,7 +35,6 @@ final class WeatherDetailViewController: UIViewController {
         containerView?.layer.shadowRadius = 4
         containerView?.layer.shadowOpacity = 0.1
 
-        // Configure labels
         cityLabel?.font = UIFont.boldSystemFont(ofSize: 28)
         cityLabel?.textAlignment = .center
         cityLabel?.textColor = .label
@@ -77,7 +62,6 @@ final class WeatherDetailViewController: UIViewController {
     }
 
     private func displayWeatherData() {
-        // Populate UI with ViewModel data
         cityLabel?.text = viewModel.cityName
         temperatureLabel?.text = viewModel.temperature
         feelsLikeLabel?.text = viewModel.feelsLike

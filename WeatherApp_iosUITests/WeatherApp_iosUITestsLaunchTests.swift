@@ -1,9 +1,6 @@
 //
 //  WeatherApp_iosUITestsLaunchTests.swift
 //  WeatherApp_iosUITests
-//
-//  Created by mac on 12/9/25.
-//
 
 import XCTest
 
@@ -21,8 +18,7 @@ final class WeatherApp_iosUITestsLaunchTests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
+
 
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "Launch Screen"

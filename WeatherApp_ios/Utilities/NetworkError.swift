@@ -2,17 +2,10 @@
 //  NetworkError.swift
 //  WeatherApp
 //
-//  Custom error types for network operations.
-//  Using a custom error enum provides better error handling and user feedback.
-//  Conforms to LocalizedError for user-friendly error messages.
-//
 
 import Foundation
 
 // MARK: - NetworkError
-/// Custom error types for network operations
-/// Conforms to LocalizedError to provide user-friendly error descriptions
-/// This follows the Single Responsibility Principle - dedicated error handling
 enum NetworkError: Error, LocalizedError, Equatable {
     case invalidURL
     case noData
@@ -24,7 +17,6 @@ enum NetworkError: Error, LocalizedError, Equatable {
     case unknown(Error)
 
     // MARK: - LocalizedError Conformance
-    /// Provides user-friendly error descriptions
     var errorDescription: String? {
         switch self {
         case .invalidURL:

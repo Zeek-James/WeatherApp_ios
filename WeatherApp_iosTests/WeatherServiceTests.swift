@@ -2,20 +2,12 @@
 //  WeatherServiceTests.swift
 //  WeatherAppTests
 //
-//  Unit tests for WeatherService.
-//  Demonstrates testing with mocks, async/await testing, and edge case coverage.
-//
 
 import XCTest
 @testable import WeatherApp_ios
 
 // MARK: - WeatherServiceTests
-/// Test suite for WeatherService
-/// Tests cover:
-/// - Successful weather fetching
-/// - Network error handling
-/// - HTTP status code handling
-/// - JSON decoding
+
 final class WeatherServiceTests: XCTestCase {
 
     // MARK: - Properties

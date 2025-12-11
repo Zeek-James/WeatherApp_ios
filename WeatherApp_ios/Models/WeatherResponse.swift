@@ -2,15 +2,11 @@
 //  WeatherResponse.swift
 //  WeatherApp
 //
-//  Model representing the OpenWeather API response structure.
-//  Follows Codable protocol for automatic JSON parsing.
-//
+
 
 import Foundation
 
 // MARK: - WeatherResponse
-/// Root response object from OpenWeather Current Weather API
-/// Conforms to Codable for JSON decoding and Equatable for testing
 struct WeatherResponse: Codable, Equatable {
     let coord: Coordinate?
     let weather: [WeatherInfo]
@@ -33,7 +29,7 @@ struct WeatherResponse: Codable, Equatable {
     }
 
     // MARK: - WeatherInfo
-    /// Contains weather condition information (description, icon, etc.)
+
     struct WeatherInfo: Codable, Equatable {
         let id: Int
         let main: String
@@ -42,7 +38,7 @@ struct WeatherResponse: Codable, Equatable {
     }
 
     // MARK: - MainWeatherData
-    /// Primary weather data including temperature, pressure, humidity
+
     struct MainWeatherData: Codable, Equatable {
         let temp: Double
         let feelsLike: Double

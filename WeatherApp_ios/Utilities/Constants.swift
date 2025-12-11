@@ -1,10 +1,7 @@
 //
 //  Constants.swift
 //  WeatherApp
-//
-//  Centralized constants for the application.
-//  This promotes maintainability and follows the DRY (Don't Repeat Yourself) principle.
-//
+
 
 import Foundation
 
@@ -12,8 +9,7 @@ import Foundation
 enum APIConstants {
     static let baseURL = "https://api.openweathermap.org/data/2.5/weather"
 
-    // NOTE: In production, this should be stored securely (e.g., in Keychain or environment variables)
-    // For the assessment, you'll need to replace this with your actual API key
+    // NOTE: In production, this should be stored securely (environment variables)
     static let apiKey = "00858296717ed8c32fb586d33a7ecc4b"
 
     // Units: standard, metric, imperial

@@ -2,20 +2,13 @@
 //  HomeViewModelTests.swift
 //  WeatherAppTests
 //
-//  Unit tests for HomeViewModel.
-//  Demonstrates ViewModel testing with mocked dependencies.
-//
+
 
 import XCTest
 @testable import WeatherApp_ios
 
 // MARK: - HomeViewModelTests
-/// Test suite for HomeViewModel
-/// Tests cover:
-/// - Weather fetching success/failure
-/// - Input validation
-/// - State management
-/// - Favorite city persistence
+
 @MainActor
 final class HomeViewModelTests: XCTestCase {
 

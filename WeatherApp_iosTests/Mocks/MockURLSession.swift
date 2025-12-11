@@ -2,16 +2,13 @@
 //  MockURLSession.swift
 //  WeatherAppTests
 //
-//  Mock URLSession for testing network requests.
-//  Demonstrates test double pattern for unit testing.
-//
+
 
 import Foundation
 @testable import WeatherApp_ios
 
 // MARK: - MockURLSession
-/// Mock URLSession for testing network operations
-/// Allows controlling the response without making actual network calls
+
 class MockURLSession: URLSessionProtocol {
 
     // MARK: - Properties
