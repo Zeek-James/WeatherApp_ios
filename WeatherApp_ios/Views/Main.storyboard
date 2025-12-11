@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SplashViewController">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="SplashScene">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="SplashViewController" customClass="SplashViewController" customModule="WeatherApp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SplashView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SplashTitleLabel">
+                                <rect key="frame" x="20" y="398" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SplashTitleHeight"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="SplashActivityIndicator">
+                                <rect key="frame" x="188.5" y="498" width="37" height="37"/>
+                                <color key="color" systemColor="systemBlueColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SplashSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SplashTitleLabel" firstAttribute="centerY" secondItem="SplashView" secondAttribute="centerY" constant="-25" id="SplashTitleCenterY"/>
+                            <constraint firstItem="SplashTitleLabel" firstAttribute="leading" secondItem="SplashSafeArea" secondAttribute="leading" constant="20" id="SplashTitleLeading"/>
+                            <constraint firstItem="SplashSafeArea" firstAttribute="trailing" secondItem="SplashTitleLabel" secondAttribute="trailing" constant="20" id="SplashTitleTrailing"/>
+                            <constraint firstItem="SplashActivityIndicator" firstAttribute="centerX" secondItem="SplashView" secondAttribute="centerX" id="SplashIndicatorCenterX"/>
+                            <constraint firstItem="SplashActivityIndicator" firstAttribute="top" secondItem="SplashTitleLabel" secondAttribute="bottom" constant="50" id="SplashIndicatorTop"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="SplashActivityIndicator" id="SplashActivityIndicatorOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SplashFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-800" y="100"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="HomeScene">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="HomeViewController" customClass="HomeViewController" customModule="WeatherApp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HomeView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HomeTitleLabel">
+                                <rect key="frame" x="20" y="128" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HomeTitleHeight"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter city name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CityTextField">
+                                <rect key="frame" x="20" y="208" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CityTextFieldHeight"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SearchButton">
+                                <rect key="frame" x="20" y="278" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SearchButtonHeight"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Search Weather">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="HomeViewController" eventType="touchUpInside" id="SearchButtonAction"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaveFavoriteButton">
+                                <rect key="frame" x="20" y="348" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SaveFavoriteButtonHeight"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save as Favorite">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="HomeViewController" eventType="touchUpInside" id="SaveFavoriteButtonAction"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LoadingIndicator">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemBlueColor"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErrorLabel">
+                                <rect key="frame" x="20" y="486.5" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HomeSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HomeTitleLabel" firstAttribute="leading" secondItem="HomeSafeArea" secondAttribute="leading" constant="20" id="HomeTitleLeading"/>
+                            <constraint firstItem="HomeTitleLabel" firstAttribute="top" secondItem="HomeSafeArea" secondAttribute="top" constant="80" id="HomeTitleTop"/>
+                            <constraint firstItem="HomeSafeArea" firstAttribute="trailing" secondItem="HomeTitleLabel" secondAttribute="trailing" constant="20" id="HomeTitleTrailing"/>
+                            <constraint firstItem="CityTextField" firstAttribute="leading" secondItem="HomeSafeArea" secondAttribute="leading" constant="20" id="CityTextFieldLeading"/>
+                            <constraint firstItem="CityTextField" firstAttribute="top" secondItem="HomeTitleLabel" secondAttribute="bottom" constant="40" id="CityTextFieldTop"/>
+                            <constraint firstItem="HomeSafeArea" firstAttribute="trailing" secondItem="CityTextField" secondAttribute="trailing" constant="20" id="CityTextFieldTrailing"/>
+                            <constraint firstItem="SearchButton" firstAttribute="leading" secondItem="HomeSafeArea" secondAttribute="leading" constant="20" id="SearchButtonLeading"/>
+                            <constraint firstItem="SearchButton" firstAttribute="top" secondItem="CityTextField" secondAttribute="bottom" constant="20" id="SearchButtonTop"/>
+                            <constraint firstItem="HomeSafeArea" firstAttribute="trailing" secondItem="SearchButton" secondAttribute="trailing" constant="20" id="SearchButtonTrailing"/>
+                            <constraint firstItem="SaveFavoriteButton" firstAttribute="leading" secondItem="HomeSafeArea" secondAttribute="leading" constant="20" id="SaveFavoriteButtonLeading"/>
+                            <constraint firstItem="SaveFavoriteButton" firstAttribute="top" secondItem="SearchButton" secondAttribute="bottom" constant="20" id="SaveFavoriteButtonTop"/>
+                            <constraint firstItem="HomeSafeArea" firstAttribute="trailing" secondItem="SaveFavoriteButton" secondAttribute="trailing" constant="20" id="SaveFavoriteButtonTrailing"/>
+                            <constraint firstItem="LoadingIndicator" firstAttribute="centerX" secondItem="HomeView" secondAttribute="centerX" id="LoadingIndicatorCenterX"/>
+                            <constraint firstItem="LoadingIndicator" firstAttribute="top" secondItem="SaveFavoriteButton" secondAttribute="bottom" constant="37.5" id="LoadingIndicatorTop"/>
+                            <constraint firstItem="ErrorLabel" firstAttribute="leading" secondItem="HomeSafeArea" secondAttribute="leading" constant="20" id="ErrorLabelLeading"/>
+                            <constraint firstItem="ErrorLabel" firstAttribute="top" secondItem="LoadingIndicator" secondAttribute="bottom" constant="20" id="ErrorLabelTop"/>
+                            <constraint firstItem="HomeSafeArea" firstAttribute="trailing" secondItem="ErrorLabel" secondAttribute="trailing" constant="20" id="ErrorLabelTrailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HomeNavigationItem"/>
+                    <connections>
+                        <outlet property="cityTextField" destination="CityTextField" id="CityTextFieldOutlet"/>
+                        <outlet property="errorLabel" destination="ErrorLabel" id="ErrorLabelOutlet"/>
+                        <outlet property="activityIndicator" destination="LoadingIndicator" id="LoadingIndicatorOutlet"/>
+                        <outlet property="favoriteButton" destination="SaveFavoriteButton" id="SaveFavoriteButtonOutlet"/>
+                        <outlet property="searchButton" destination="SearchButton" id="SearchButtonOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HomeFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="100"/>
+        </scene>
+        <!--Weather Detail View Controller-->
+        <scene sceneID="DetailScene">
+            <objects>
+                <viewController storyboardIdentifier="WeatherDetailViewController" id="DetailViewController" customClass="WeatherDetailViewController" customModule="WeatherApp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DetailView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScrollView">
+                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CityNameLabel">
+                                                <rect key="frame" x="20" y="30" width="374" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="CityNameLabelHeight"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TemperatureLabel">
+                                                <rect key="frame" x="20" y="90" width="374" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="TemperatureLabelHeight"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="72"/>
+                                                <color key="textColor" systemColor="systemBlueColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear Sky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DescriptionLabel">
+                                                <rect key="frame" x="20" y="190" width="374" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="DescriptionLabelHeight"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DetailContainer">
+                                                <rect key="frame" x="20" y="250" width="374" height="400"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DetailStackView">
+                                                        <rect key="frame" x="16" y="16" width="342" height="368"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeelsLikeView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="62"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feels Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeelsLikeTitleLabel">
+                                                                        <rect key="frame" x="8" y="8" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeelsLikeValueLabel">
+                                                                        <rect key="frame" x="8" y="33" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                        <color key="textColor" systemColor="labelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="FeelsLikeTitleLabel" firstAttribute="top" secondItem="FeelsLikeView" secondAttribute="top" constant="8" id="FeelsLikeTitleTop"/>
+                                                                    <constraint firstItem="FeelsLikeTitleLabel" firstAttribute="leading" secondItem="FeelsLikeView" secondAttribute="leading" constant="8" id="FeelsLikeTitleLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="FeelsLikeTitleLabel" secondAttribute="trailing" constant="8" id="FeelsLikeTitleTrailing"/>
+                                                                    <constraint firstItem="FeelsLikeValueLabel" firstAttribute="top" secondItem="FeelsLikeTitleLabel" secondAttribute="bottom" constant="4" id="FeelsLikeValueTop"/>
+                                                                    <constraint firstItem="FeelsLikeValueLabel" firstAttribute="leading" secondItem="FeelsLikeView" secondAttribute="leading" constant="8" id="FeelsLikeValueLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="FeelsLikeValueLabel" secondAttribute="trailing" constant="8" id="FeelsLikeValueTrailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="FeelsLikeValueLabel" secondAttribute="bottom" constant="8" id="FeelsLikeValueBottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HumidityView">
+                                                                <rect key="frame" x="0.0" y="82" width="342" height="62"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HumidityTitleLabel">
+                                                                        <rect key="frame" x="8" y="8" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="65%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HumidityValueLabel">
+                                                                        <rect key="frame" x="8" y="33" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                        <color key="textColor" systemColor="labelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="HumidityTitleLabel" firstAttribute="top" secondItem="HumidityView" secondAttribute="top" constant="8" id="HumidityTitleTop"/>
+                                                                    <constraint firstItem="HumidityTitleLabel" firstAttribute="leading" secondItem="HumidityView" secondAttribute="leading" constant="8" id="HumidityTitleLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="HumidityTitleLabel" secondAttribute="trailing" constant="8" id="HumidityTitleTrailing"/>
+                                                                    <constraint firstItem="HumidityValueLabel" firstAttribute="top" secondItem="HumidityTitleLabel" secondAttribute="bottom" constant="4" id="HumidityValueTop"/>
+                                                                    <constraint firstItem="HumidityValueLabel" firstAttribute="leading" secondItem="HumidityView" secondAttribute="leading" constant="8" id="HumidityValueLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="HumidityValueLabel" secondAttribute="trailing" constant="8" id="HumidityValueTrailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="HumidityValueLabel" secondAttribute="bottom" constant="8" id="HumidityValueBottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PressureView">
+                                                                <rect key="frame" x="0.0" y="164" width="342" height="62"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PressureTitleLabel">
+                                                                        <rect key="frame" x="8" y="8" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1013 hPa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PressureValueLabel">
+                                                                        <rect key="frame" x="8" y="33" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                        <color key="textColor" systemColor="labelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="PressureTitleLabel" firstAttribute="top" secondItem="PressureView" secondAttribute="top" constant="8" id="PressureTitleTop"/>
+                                                                    <constraint firstItem="PressureTitleLabel" firstAttribute="leading" secondItem="PressureView" secondAttribute="leading" constant="8" id="PressureTitleLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="PressureTitleLabel" secondAttribute="trailing" constant="8" id="PressureTitleTrailing"/>
+                                                                    <constraint firstItem="PressureValueLabel" firstAttribute="top" secondItem="PressureTitleLabel" secondAttribute="bottom" constant="4" id="PressureValueTop"/>
+                                                                    <constraint firstItem="PressureValueLabel" firstAttribute="leading" secondItem="PressureView" secondAttribute="leading" constant="8" id="PressureValueLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="PressureValueLabel" secondAttribute="trailing" constant="8" id="PressureValueTrailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="PressureValueLabel" secondAttribute="bottom" constant="8" id="PressureValueBottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WindSpeedView">
+                                                                <rect key="frame" x="0.0" y="246" width="342" height="62"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WindSpeedTitleLabel">
+                                                                        <rect key="frame" x="8" y="8" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0 m/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WindSpeedValueLabel">
+                                                                        <rect key="frame" x="8" y="33" width="326" height="21"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                        <color key="textColor" systemColor="labelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="WindSpeedTitleLabel" firstAttribute="top" secondItem="WindSpeedView" secondAttribute="top" constant="8" id="WindSpeedTitleTop"/>
+                                                                    <constraint firstItem="WindSpeedTitleLabel" firstAttribute="leading" secondItem="WindSpeedView" secondAttribute="leading" constant="8" id="WindSpeedTitleLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="WindSpeedTitleLabel" secondAttribute="trailing" constant="8" id="WindSpeedTitleTrailing"/>
+                                                                    <constraint firstItem="WindSpeedValueLabel" firstAttribute="top" secondItem="WindSpeedTitleLabel" secondAttribute="bottom" constant="4" id="WindSpeedValueTop"/>
+                                                                    <constraint firstItem="WindSpeedValueLabel" firstAttribute="leading" secondItem="WindSpeedView" secondAttribute="leading" constant="8" id="WindSpeedValueLeading"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="WindSpeedValueLabel" secondAttribute="trailing" constant="8" id="WindSpeedValueTrailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="WindSpeedValueLabel" secondAttribute="bottom" constant="8" id="WindSpeedValueBottom"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CountryView">
+                                                                <rect key="frame" x="0.0" y="328" width="342" height="40"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CountryTitleLabel">
+                                                                        <rect key="frame" x="8" y="0.0" width="151" height="40"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CountryValueLabel">
+                                                                        <rect key="frame" x="167" y="0.0" width="167" height="40"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="labelColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="CountryTitleLabel" firstAttribute="leading" secondItem="CountryView" secondAttribute="leading" constant="8" id="CountryTitleLeading"/>
+                                                                    <constraint firstItem="CountryTitleLabel" firstAttribute="top" secondItem="CountryView" secondAttribute="top" id="CountryTitleTop"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="CountryTitleLabel" secondAttribute="bottom" id="CountryTitleBottom"/>
+                                                                    <constraint firstItem="CountryValueLabel" firstAttribute="leading" secondItem="CountryTitleLabel" secondAttribute="trailing" constant="8" id="CountryValueLeading"/>
+                                                                    <constraint firstItem="CountryValueLabel" firstAttribute="top" secondItem="CountryView" secondAttribute="top" id="CountryValueTop"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="CountryValueLabel" secondAttribute="trailing" constant="8" id="CountryValueTrailing"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="CountryValueLabel" secondAttribute="bottom" id="CountryValueBottom"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="CountryViewHeight"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="DetailStackView" firstAttribute="leading" secondItem="DetailContainer" secondAttribute="leading" constant="16" id="DetailStackLeading"/>
+                                                    <constraint firstItem="DetailStackView" firstAttribute="top" secondItem="DetailContainer" secondAttribute="top" constant="16" id="DetailStackTop"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DetailStackView" secondAttribute="trailing" constant="16" id="DetailStackTrailing"/>
+                                                    <constraint firstAttribute="bottom" secondItem="DetailStackView" secondAttribute="bottom" constant="16" id="DetailStackBottom"/>
+                                                    <constraint firstAttribute="height" constant="400" id="DetailContainerHeight"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="CityNameLabel" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="CityNameLeading"/>
+                                            <constraint firstItem="CityNameLabel" firstAttribute="top" secondItem="ContentView" secondAttribute="top" constant="30" id="CityNameTop"/>
+                                            <constraint firstAttribute="trailing" secondItem="CityNameLabel" secondAttribute="trailing" constant="20" id="CityNameTrailing"/>
+                                            <constraint firstItem="TemperatureLabel" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="TemperatureLeading"/>
+                                            <constraint firstItem="TemperatureLabel" firstAttribute="top" secondItem="CityNameLabel" secondAttribute="bottom" constant="20" id="TemperatureTop"/>
+                                            <constraint firstAttribute="trailing" secondItem="TemperatureLabel" secondAttribute="trailing" constant="20" id="TemperatureTrailing"/>
+                                            <constraint firstItem="DescriptionLabel" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="DescriptionLeading"/>
+                                            <constraint firstItem="DescriptionLabel" firstAttribute="top" secondItem="TemperatureLabel" secondAttribute="bottom" constant="20" id="DescriptionTop"/>
+                                            <constraint firstAttribute="trailing" secondItem="DescriptionLabel" secondAttribute="trailing" constant="20" id="DescriptionTrailing"/>
+                                            <constraint firstItem="DetailContainer" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="DetailContainerLeading"/>
+                                            <constraint firstItem="DetailContainer" firstAttribute="top" secondItem="DescriptionLabel" secondAttribute="bottom" constant="30" id="DetailContainerTop"/>
+                                            <constraint firstAttribute="trailing" secondItem="DetailContainer" secondAttribute="trailing" constant="20" id="DetailContainerTrailing"/>
+                                            <constraint firstAttribute="bottom" secondItem="DetailContainer" secondAttribute="bottom" constant="20" id="DetailContainerBottom"/>
+                                            <constraint firstAttribute="height" constant="700" id="ContentViewHeight"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ContentView" firstAttribute="width" secondItem="ScrollView" secondAttribute="width" id="ContentViewWidth"/>
+                                    <constraint firstItem="ContentView" firstAttribute="leading" secondItem="ScrollView" secondAttribute="leading" id="ContentViewLeading"/>
+                                    <constraint firstItem="ContentView" firstAttribute="top" secondItem="ScrollView" secondAttribute="top" id="ContentViewTop"/>
+                                    <constraint firstItem="ContentView" firstAttribute="trailing" secondItem="ScrollView" secondAttribute="trailing" id="ContentViewTrailing"/>
+                                    <constraint firstItem="ContentView" firstAttribute="bottom" secondItem="ScrollView" secondAttribute="bottom" id="ContentViewBottom"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DetailSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ScrollView" firstAttribute="leading" secondItem="DetailSafeArea" secondAttribute="leading" id="ScrollViewLeading"/>
+                            <constraint firstItem="ScrollView" firstAttribute="top" secondItem="DetailSafeArea" secondAttribute="top" id="ScrollViewTop"/>
+                            <constraint firstItem="DetailSafeArea" firstAttribute="trailing" secondItem="ScrollView" secondAttribute="trailing" id="ScrollViewTrailing"/>
+                            <constraint firstItem="DetailSafeArea" firstAttribute="bottom" secondItem="ScrollView" secondAttribute="bottom" id="ScrollViewBottom"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DetailNavigationItem"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="CityNameLabel" id="CityNameLabelOutlet"/>
+                        <outlet property="containerView" destination="DetailContainer" id="DetailContainerOutlet"/>
+                        <outlet property="descriptionLabel" destination="DescriptionLabel" id="DescriptionLabelOutlet"/>
+                        <outlet property="feelsLikeLabel" destination="FeelsLikeValueLabel" id="FeelsLikeLabelOutlet"/>
+                        <outlet property="humidityLabel" destination="HumidityValueLabel" id="HumidityLabelOutlet"/>
+                        <outlet property="pressureLabel" destination="PressureValueLabel" id="PressureLabelOutlet"/>
+                        <outlet property="temperatureLabel" destination="TemperatureLabel" id="TemperatureLabelOutlet"/>
+                        <outlet property="windSpeedLabel" destination="WindSpeedValueLabel" id="WindSpeedLabelOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DetailFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="100"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
