@@ -128,9 +128,3 @@ Temporary Items
 # API Keys (if moved to separate file in future)
 Secrets.swift
 Config.xcconfig
-
-# Interview preparation files (local only)
-INTERVIEW_DEFENSE_GUIDE.md
-QUICK_REFERENCE.md
-PRACTICE_QA.md
-PROJECT_SUMMARY.md
